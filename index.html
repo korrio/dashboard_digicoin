@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>
+        Digicoin Dashboard
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+    <link href="../assets/css/toolkit-inverse.css" rel="stylesheet">
+    <link href="../assets/css/application.css" rel="stylesheet">
+    <!--     <link href="../assets/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-reboot.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>
+    /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+    /* this chunk of css is not part of the toolkit :) */
+
+    body {
+        width: 1px;
+        min-width: 100%;
+        *width: 100%;
+        padding-top: 20px !important;
+    }
+
+    @media only screen and (max-width: 768px) {
+        #chart-area {
+            display: block;
+            width: 100%;
+            height: 550px;
+        }
+        .nth {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 769px) {
+        #chart-area {
+            display: block;
+            width: 650px;
+            height: 650px;
+        }
+    }
+
+
+
+    #chart-container .embed {
+        height: 350px;
+    }
+    nav.ch {
+        z-index: 9999;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="brp">
+        <nav class="ch">
+            <a class="brq" href="../index.html">
+      <span class="bv bik brr"></span>
+    </a>
+            <div class="bru">
+                <ul class="nav qq brs aaj">
+                    <li class="qp">
+                        <a class="qn active" href="index.html" title="Overview" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="bv bhn"></span>
+            <small class="brt axz">Overview</small>
+          </a>
+                    </li>
+                    <li class="qp">
+                        <a class="qn " href="order-history.html" title="Order history" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="bv bnv"></span>
+            <small class="brt axz">History</small>
+          </a>
+                    </li>
+                    <li class="qp">
+                        <a class="qn" href="embed.html" title="Cryptowat.ch" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="bv bgy"></span>
+            <small class="brt axz">Cryptowat.ch</small>
+          </a>
+                    </li>
+                    <!-- <li class="qp">
+          <a class="qn active" href="../icon-nav/index.html" title="Icon-nav" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="bv bau"></span>
+            <small class="brt axz">Icon nav</small>
+          </a>
+        </li>
+        <li class="qp">
+          <a class="qn" href="../order-history.html" title="Docs" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="bv biv"></span>
+            <small class="brt axz">Docs</small>
+          </a>
+        </li>
+        <li class="qp">
+          <a class="qn" href="../index-light/index.html" title="Light UI" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="bv bgb"></span>
+            <small class="brt axz">Light UI</small>
+          </a>
+        </li>
+        <li class="qp">
+          <a class="qn" href="#" title="Signed in as mdo" data-toggle="tooltip" data-placement="right" data-container="body">
+            <img src="../assets/img/avatar-mdo.png" alt="" class="wc">
+            <small class="brt axz">@mdo</small>
+          </a>
+        </li> -->
+                </ul>
+            </div>
+        </nav>
+        <nav class="ci rd aem ri vr app-navbar" style="display: none">
+            <button class="qx ra axz" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="qy"></span>
+            </button>
+            <img width="90" src="http://www.infinance.co/wp-content/uploads/2017/07/cropped-Untitled-3-2.png" />
+            <a class="qv" href="#">
+                <!-- <span class="bv bik ayz"></span> -->
+                <!-- Dashboard -->
+            </a>
+            <div class="collapse rc aij" id="navbarResponsive">
+                <ul class="nav navbar-nav">
+                    <li class="qp active">
+                        <a class="qn" href="index.html">Overview</a>
+                    </li>
+                    <li class="qp">
+                        <a class="qn" href="order-history.html">Order History</a>
+                    </li>
+                    <!--                 <li class="qp">
+                    <a class="qn" href="../icon-nav/index.html">Icon nav</a>
+                </li>
+                <li class="qp">
+                    <a class="qn" href="../docs/index.html">Docs</a> -->
+                    </li>
+                </ul>
+                <form class="ox axy ail">
+                    <input class="form-control" type="text" data-action="grow" placeholder="Search">
+                </form>
+            </div>
+        </nav>
+        <div class="dh azs">
+            <div class="brv age">
+                <div class="brw">
+                    <h6 class="bry nth">Dashboards</h6>
+                    <h2 class="brx">Overview</h2>
+                </div>
+                <div class="qb brz">
+                    <div class="ayt brg">
+                        <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+                        <span class="bv bck"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="di bsl afx afz ayo awx">
+                <div class="dq em bsm agg">
+                    <h3 class="bqp axp">
+          12,938
+          <small class="bqr bqs">5%</small>
+        </h3>
+                    <span class="bqq">Revenue</span>
+                </div>
+                <div class="dq em bsm agg">
+                    <h3 class="bqp axs">
+          758
+          <small class="bqr bqt">1.3%</small>
+        </h3>
+                    <span class="bqq">Coins</span>
+                </div>
+                <div class="dq em bsm agg">
+                    <h3 class="bqp axp">
+          1,293
+          <small class="bqr bqs">6.75%</small>
+        </h3>
+                    <span class="bqq">Sign-ups</span>
+                </div>
+                <div class="dq em bsm agg">
+                    <h3 class="bqp axs">
+          758
+          <small class="bqr bqt">1.3%</small>
+        </h3>
+                    <span class="bqq">KYCs</span>
+                </div>
+            </div>
+            <div class="brc agj">
+                <div class="qq brd brf">
+                    <canvas id="chart-area" style="">
+                    </canvas>
+                </div>
+            </div>
+            <div class="brc agj">
+                <ul class="nav qq brd brf" role="tablist">
+                    <li class="qp" role="presentation">
+                        <a href="#sales" class="qn active" role="tab" data-toggle="tab" aria-controls="sales">ALL</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#sales" class="qn" role="tab" data-toggle="tab" aria-controls="sales">ZCOIN</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#inventory" class="qn" role="tab" data-toggle="tab" aria-controls="inventory">BITCOIN</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#profit" class="qn" role="tab" data-toggle="tab" aria-controls="profit">TRUEMONEY</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#profit" class="qn" role="tab" data-toggle="tab" aria-controls="profit">ALIPAY</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#profit" class="qn" role="tab" data-toggle="tab" aria-controls="profit">LINEPAY</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#profit" class="qn" role="tab" data-toggle="tab" aria-controls="profit">VISA/MASTERCARD</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#profit" class="qn" role="tab" data-toggle="tab" aria-controls="profit">WECHATPAY</a>
+                    </li>
+                    <li class="qp" role="presentation">
+                        <a href="#profit" class="qn" role="tab" data-toggle="tab" aria-controls="profit">PAYPAL</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="qt">
+                <div role="tabpanel" class="qu" id="profit">
+                    <div class="bvf">
+                        <canvas class="brb" width="600" height="350" data-chart="line" data-dataset="[[2500, 3300, 2512, 2775, 2498, 3512, 2925, 4275, 3507, 3825, 3445, 3985]]" data-labels="['','Aug 29','','','Sept 5','','','Sept 12','','','Sept 19','']" data-dark="true">
+                        </canvas>
+                    </div>
+                </div>
+                <div role="tabpanel" class="qu" id="inventory">
+                    <div class="bvf">
+                        <canvas class="brb" width="600" height="400" data-chart="bar" data-dark="true" data-labels="['August','September','October','November','December','January','February']" data-dataset="[[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]]" data-dataset-options="[{label: 'First dataset'}, {label: 'Second dataset'}]">
+                        </canvas>
+                    </div>
+                </div>
+                <style type="text/css">
+                .donut-inner {
+                    margin-top: -140px; //margin-bottom: 100px;
+                }
+
+                .donut-inner h3 {
+                    margin-bottom: 5px;
+                    margin-top: 0;
+                }
+
+                .donut-inner span {
+                    font-size: 12px;
+                }
+                </style>
+                <div role="tabpanel" class="qu active" id="sales">
+                    <div class="di bvg awt">
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas id="zxc-donut" class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[230, 130]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Returning', 'New']">
+                                </canvas>
+                            </div>
+                            <div class="donut-inner">
+                                <h3>304,203.23</h3>
+                                <h4>XZC</h4>
+                                <!-- <span><strong class="axn">THBXZC</strong></span> -->
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h2>ZCOIN</h2>
+                                <strong class="axn">THBXZC</strong>
+                            </div>
+                        </div>
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas id="btc-donut" class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[330,30]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Merchant', 'Paid']">
+                                </canvas>
+                            </div>
+                            <div class="donut-inner">
+                                <h3>3.234534</h3>
+                                <h4>BTC</h4>
+                                <!-- <span><strong class="axn">THB</strong></span> -->
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h2>BITCOIN</h2>
+                                <strong class="axn btc-rate">140,000 THB/BTC</strong>
+                            </div>
+                        </div>
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas id="btc-donut" class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Merchant', 'Paid']">
+                                </canvas>
+                            </div>
+                            <div class="donut-inner">
+                                <h3>4,534.03</h3>
+                                <h4>THB</h4>
+                                <!-- <span><strong class="axn">THB</strong></span> -->
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h2>TRUEMONEY</h2>
+                                <strong class="axn btc-rate"></strong>
+                            </div>
+                            <span><strong class="axn">Traffic</strong></span>
+                        </div>
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Merchant', 'Paid']">
+                                </canvas>
+                            </div>
+                            <div class="donut-inner">
+                                <h3>2,434,534.07</h3>
+                                <h4>CNY</h4>
+                                <!-- <span><strong class="axn">THB</strong></span> -->
+                                <br/>
+                                <br/>
+                                <br/>
+                                <strong class="axn btc-rate"></strong>
+                            </div>
+                            <h3>ALIPAY</h3>
+                            <strong class="axn">Traffic</strong>
+                        </div>
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Referrals', 'Direct']">
+                                </canvas>
+                            </div>
+                            <strong class="axn">Traffic</strong>
+                            <h3>LINEPAY</h3>
+                        </div>
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Referrals', 'Direct']">
+                                </canvas>
+                            </div>
+                            <strong class="axn">Traffic</strong>
+                            <h3>VISA/MASTERCARD</h3>
+                        </div>
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Referrals', 'Direct']">
+                                </canvas>
+                            </div>
+                            <strong class="axn">Traffic</strong>
+                            <h3>WECHATPAY</h3>
+                        </div>
+                        <div class="ez agg air">
+                            <div class="azy aim">
+                                <canvas class="bra" width="200" height="200" data-chart="doughnut" data-dataset="[100,260]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Referrals', 'Direct']">
+                                </canvas>
+                            </div>
+                            <strong class="axn">Traffic</strong>
+                            <h3>PAYPAL</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="brc afx agn">
+                <h3 class="brd bre">Exchange Rate from Bank of Thailand</h3>
+            </div>
+            <div class="di bsl">
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBUSD-container">
+                        <div class="bve">
+                            <span class="bqq">THB/USD</span>
+                            <h2 class="bqp" id="THBUSD">
+          12,938
+          <small class="cj sy">5%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[28,68,41,43,96,45,100]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a', 'b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBCNY-container">
+                        <div class="bve">
+                            <span class="bqq">THB/CNY</span>
+                            <h2 class="bqp" id="THBCNY">
+          758
+          <small class="cj tb">1.3%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[4,34,64,27,96,50,80]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBJPY-container">
+                        <div class="bve">
+                            <span class="bqq">THB/JPY</span>
+                            <h2 class="bqp" id="THBJPY">
+          1,293
+          <small class="cj sy">6.75%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[12,38,32,60,36,54,68]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBSGD-container">
+                        <div class="bve">
+                            <span class="bqq">THB/SGD</span>
+                            <h2 class="bqp" id="THBSGD">
+          758
+          <small class="cj sy">1.3%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[43,48,52,58,50,95,100]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBEUR-container">
+                        <div class="bve">
+                            <span class="bqq">THB/EUR</span>
+                            <h2 class="bqp" id="THBEUR">
+          758
+          <small class="cj sy">1.3%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[43,48,52,58,50,95,100]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBAUD-container">
+                        <div class="bve">
+                            <span class="bqq">THB/AUD</span>
+                            <h2 class="bqp" id="THBAUD">
+          758
+          <small class="cj sy">1.3%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[43,48,52,58,50,95,100]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBHKD-container">
+                        <div class="bve">
+                            <span class="bqq">THB/HKD</span>
+                            <h2 class="bqp" id="THBHKD">
+          758
+          <small class="cj sy">1.3%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[43,48,52,58,50,95,100]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+                <div class="ep ez agn amz">
+                    <div class="bsm" id="THBGBP-container">
+                        <div class="bve">
+                            <span class="bqq">THB/GBP</span>
+                            <h2 class="bqp" id="THBGBP">
+          758
+          <small class="cj sy">1.3%</small>
+        </h2>
+                        </div>
+                        <canvas id="sparkline1" width="378" height="94" class="bsn" data-chart="spark-line" data-dataset="[[43,48,52,58,50,95,100]]" data-dataset-options="[{borderColor: '#1ca8dd', backgroundColor:'rgba(28,168,221,.03)'}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="brc agj">
+  <ul class="nav qq brd brf" role="tablist">
+    <li class="qp" role="presentation">
+      <a href="#sales" class="qn active" role="tab" data-toggle="tab" aria-controls="sales">Sales</a>
+    </li>
+    <li class="qp" role="presentation">
+      <a href="#inventory" class="qn" role="tab" data-toggle="tab" aria-controls="inventory">Inventory</a>
+    </li>
+    <li class="qp" role="presentation">
+      <a href="#profit" class="qn" role="tab" data-toggle="tab" aria-controls="profit">Profit</a>
+    </li>
+  </ul>
+</div> -->
+            <div class="brc agl agg">
+                <h3 class="brd bre">RECENT TRANSACTION</h3>
+            </div>
+            <div class="di">
+                <div class="fa agn">
+                    <div class="by afz">
+                        <h6 class="azi">
+        Users are from
+      </h6>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 62.4%;"></span>
+          <span>China</span>
+          <span class="axn">62.4%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 15.0%;"></span>
+          <span>United States</span>
+          <span class="axn">15.0%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 5.0%;"></span>
+          <span>United Kingdom</span>
+          <span class="axn">5.0%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 5.0%;"></span>
+          <span>Canada</span>
+          <span class="axn">5.0%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 4.5%;"></span>
+          <span>Russia</span>
+          <span class="axn">4.5%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 2.3%;"></span>
+          <span>Mexico</span>
+          <span class="axn">2.3%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 1.7%;"></span>
+          <span>Spain</span>
+          <span class="axn">1.7%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 1.5%;"></span>
+          <span>France</span>
+          <span class="axn">1.5%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 1.4%;"></span>
+          <span>South Africa</span>
+          <span class="axn">1.4%</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span class="azj" style="width: 1.2%;"></span>
+          <span>Japan</span>
+          <span class="axn">1.2%</span>
+        </a>
+                    </div>
+                    <a href="#" class="ce pi ahr">All countries</a>
+                </div>
+                <div class="fa agn">
+                    <div class="by afz">
+                        <h6 class="azi">
+        Recent API calls
+      </h6>
+                        <a class="rp tr yg" href="#">
+          <span>/ (Logged out)</span>
+          <span class="axn">3,929,481</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/ (Logged in)</span>
+          <span class="axn">1,143,393</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/tour</span>
+          <span class="axn">938,287</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/features/something</span>
+          <span class="axn">749,393</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/features/another-thing</span>
+          <span class="axn">695,912</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/users/username</span>
+          <span class="axn">501,938</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/page-title</span>
+          <span class="axn">392,842</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/some/page-slug</span>
+          <span class="axn">298,183</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/another/directory/and/page-title</span>
+          <span class="axn">193,129</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>/one-more/page/directory/file-name</span>
+          <span class="axn">93,382</span>
+        </a>
+                    </div>
+                    <a href="#" class="ce pi ahr">View all pages</a>
+                </div>
+                <div class="fa agn">
+                    <div class="by afz">
+                        <h6 class="azi">
+        Coin payload (THB)
+      </h6>
+                        <a class="rp tr yg" href="#">
+          <span>BKK#1 (1920x1080)</span>
+          <span class="axn">3,929,481</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>DMK#1 (1366x768)</span>
+          <span class="axn">1,143,393</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>DMK#1 (1440x900)</span>
+          <span class="axn">938,287</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>DMK#2 (1280x800)</span>
+          <span class="axn">749,393</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>BKK#4 (1024x768)</span>
+          <span class="axn">695,912</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>BKK#3 (768x1024)</span>
+          <span class="axn">501,938</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>HKT#1 (320x480)</span>
+          <span class="axn">392,842</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>BKK#2 (720x450)</span>
+          <span class="axn">298,183</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>CNX#4 (2560x1080)</span>
+          <span class="axn">193,129</span>
+        </a>
+                        <a class="rp tr yg" href="#">
+          <span>HYD#1 (2560x1600)</span>
+          <span class="axn">93,382</span>
+        </a>
+                    </div>
+                    <a href="#" class="ce pi ahr">View all pages</a>
+                </div>
+            </div>
+            <div class="brc agl agg cryptowatch">
+                <h3 class="brd bre">CRYPTOWAT.CH</h3>
+            </div>
+            <div class="di cryptowatch" id="chart-container">
+                <div class="fa agn">
+                    <div class="embed omgusd"></div>
+                </div>
+                <div class="fa agn">
+                    <div class="embed omgbtc"></div>
+                </div>
+                <div class="fa agn">
+                    <div class="embed btcusd"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/tether.min.js"></script>
+    <script src="../assets/js/tablesorter.min.js"></script>
+    <script src="../assets/js/toolkit.js"></script>
+    <script src="../assets/js/application.js"></script>
+    <script src="../assets/js/chart.js"></script>
+    <script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
+    <script>
+    // execute/clear BS loaders for docs
+    $(function() {
+        while (window.BS && window.BS.loader && window.BS.loader.length) {
+            (window.BS.loader.pop())()
+        }
+    })
+    </script>
+    <script type="text/javascript">
+    var currency = ["USD", "CNY", "JPY", "SGD", "EUR", "AUD", "HKD", "GBP"];
+    var cryptocurrency = ["omgusd", "omgbtc", "btcusd"];
+
+    window.chartColors = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(201, 203, 207)'
+    };
+
+    $(function() {
+
+        callRevenue();
+
+        $.each(currency, function(k, v) {
+            callExchange(v);
+        });
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $(".cryptowatch").hide();
+        } else {
+            $.each(cryptocurrency, function(k, v) {
+                callCryptowatch(v);
+            });
+        }
+
+    });
+
+    function callCryptowatch(currency) {
+        var chart = new cryptowatch.Embed('bitfinex', currency, {
+            timePeriod: '4H',
+            width: '100%',
+            customColorScheme: {
+                bg: "252830",
+                text: "b2b2b2",
+                textStrong: "e5e5e5",
+                textWeak: "7f7f7f",
+                short: "FD4600",
+                shortFill: "FF672C",
+                long: "6290FF",
+                longFill: "002782",
+                cta: "363D52",
+                ctaHighlight: "414A67",
+                alert: "FFD506",
+            }
+        });
+        chart.mount('#chart-container .' + currency);
+    }
+
+    function callExchange(currency) {
+
+        $.ajax({
+            type: "GET",
+            url: "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/?start_period=2017-08-03&end_period=2017-08-12&currency=" + currency,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(
+                    'api-key', 'U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm'
+                );
+            },
+            success: function(result) {
+                console.log(result.result.data);
+                $("#THB" + currency).html(result.result.data.data_detail[0].selling);
+
+                var a = [];
+
+                $.each(result.result.data.data_detail, function(k, v) {
+                    a.push(v.buying_transfer);
+                });
+
+
+                var options = $.extend({
+                    animation: { duration: 100 },
+                    legend: { display: !1 },
+                    scales: {
+                        xAxes: [{ display: !1 }],
+                        yAxes: [{ display: !1 }]
+                    },
+                    tooltips: { enabled: 1 }
+                }, options);
+
+                var ctx = $("#THB" + currency + "-container #sparkline1");
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [{
+                            // label: '# of Votes',
+                            data: a,
+                            backgroundColor: [
+                                'rgba(28,168,221,0.03)',
+                                // 'rgba(54, 162, 235, 0.2)',
+                                // 'rgba(255, 206, 86, 0.2)',
+                                // 'rgba(75, 192, 192, 0.2)',
+                                // 'rgba(153, 102, 255, 0.2)',
+                                // 'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                '#1ca8dd',
+                                // 'rgba(54, 162, 235, 1)',
+                                // 'rgba(255, 206, 86, 1)',
+                                // 'rgba(75, 192, 192, 1)',
+                                // 'rgba(153, 102, 255, 1)',
+                                // 'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 3
+                        }]
+                    },
+                    options: options
+                });
+
+            },
+            error: function(result) {
+                //handle the error
+            }
+        });
+
+    }
+
+    function callRevenue() {
+
+        var randomScalingFactor = function() {
+            return Math.round(Math.random() * 100);
+        };
+
+        var config = {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                    ],
+                    backgroundColor: [
+                        window.chartColors.red,
+                        window.chartColors.orange,
+                        window.chartColors.yellow,
+                        window.chartColors.green,
+                        window.chartColors.blue,
+                    ],
+                    label: 'Dataset 1'
+                }],
+                labels: [
+                    "ALIPAY",
+                    "PAYPAL",
+                    "VISA/MASTERCARD",
+                    "BITCOIN",
+                    "ZCOIN"
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false,
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Revenue Chart'
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            }
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById("chart-area").getContext("2d");
+            window.myDoughnut = new Chart(ctx, config);
+        };
+
+    }
+
+    Chart.pluginService.register({
+        beforeDraw: function(chart) {
+            if (chart.config.options.elements.center) {
+                //Get ctx from string
+                var ctx = chart.chart.ctx;
+
+                //Get options from the center object in options
+                var centerConfig = chart.config.options.elements.center;
+                var fontStyle = centerConfig.fontStyle || 'Arial';
+                var txt = centerConfig.text;
+                var color = centerConfig.color || '#000';
+                var sidePadding = centerConfig.sidePadding || 20;
+                var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
+                //Start with a base font of 30px
+                ctx.font = "30px " + fontStyle;
+
+                //Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+                var stringWidth = ctx.measureText(txt).width;
+                var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+                // Find out how much the font can grow in width.
+                var widthRatio = elementWidth / stringWidth;
+                var newFontSize = Math.floor(30 * widthRatio);
+                var elementHeight = (chart.innerRadius * 2);
+
+                // Pick a new font size so it will not be larger than the height of label.
+                var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+                //Set font settings to draw it correctly.
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+                var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+                ctx.font = fontSizeToUse + "px " + fontStyle;
+                ctx.fillStyle = color;
+
+                //Draw text in center
+                ctx.fillText(txt, centerX, centerY);
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
